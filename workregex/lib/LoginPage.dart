@@ -270,7 +270,7 @@ class _Home2State extends State<Home2> {
                       style: GoogleFonts.roboto(
                           fontSize: 16, fontWeight: FontWeight.w700),
                     ),
-                  ),
+                  ), // mohit
                   Padding(
                     padding: const EdgeInsets.only(top: 10, left: 10),
                     child: Row(
