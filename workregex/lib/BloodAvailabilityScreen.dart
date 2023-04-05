@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'AvailableBloodScreen.dart';
-import 'NotAvailableBloodScreen.dart';
+import 'bloodhospital.dart';
+import 'AavailableBloodScreen.dart';
 
 class BloodAvailabilityScreen extends StatefulWidget {
   const BloodAvailabilityScreen({super.key});
@@ -17,7 +17,7 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffEDEDED),
-      appBar: AppBar(
+      appBar: AppBar(leading:BackButton(),
         title: Text(
           "Blood Availability Search",
           style: GoogleFonts.roboto(
@@ -41,7 +41,7 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AvailableBloodScreen(),
+                      builder: (context) => Bloodhospital(),
                     ));
               },
               child: Container(
@@ -170,7 +170,7 @@ class _BloodAvailabilityScreenState extends State<BloodAvailabilityScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NotAvailableBloodScreen(),
+                      builder: (context) => Bloodhospital(),
                     ));
               },
               child: Container(

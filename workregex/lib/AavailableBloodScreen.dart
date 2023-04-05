@@ -1,33 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class BloodDonationCamp2 extends StatefulWidget {
-  const BloodDonationCamp2({super.key});
+class Ablood extends StatefulWidget {
+  const Ablood({super.key});
 
   @override
-  State<BloodDonationCamp2> createState() => _BloodDonationCamp2State();
+  State<Ablood> createState() => _AbloodState();
 }
 
-class _BloodDonationCamp2State extends State<BloodDonationCamp2> {
+class _AbloodState extends State<Ablood> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        leading: const BackButton(),
         title: Text(
-          "Blood Donation Camp",
-          style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
+          "Blood Availability Search",
+          style: GoogleFonts.roboto(
+              fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
         ),
-        backgroundColor: Color(0xffBF222B),
+        elevation: 0,
+        backgroundColor: const Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_outlined))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none))
         ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
+              height: 16,
+            ),
+            Text(
+              "Whole Blood Not Available Search for another\nComponent",
+              style: GoogleFonts.roboto(
+                  color: const Color(0xff706464),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w400),
+            ),
+            const SizedBox(
               height: 16,
             ),
             Container(
@@ -40,95 +53,96 @@ class _BloodDonationCamp2State extends State<BloodDonationCamp2> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Blood Donation Camp",
+                          "Trust Blood Hospital",
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff473D3D)),
+                              color: const Color(0xff473D3D)),
                         ),
                         Text(
-                          "Jodhpur",
+                          "Not Available",
                           style: GoogleFonts.roboto(
-                              fontSize: 16,
+                              fontSize: 13,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff473D3D)),
+                              color: const Color(0xffBF1D42)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Organized By Youth Samiti",
+                          "Last Updated 15-03-2023",
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xff706464)),
+                              color: const Color(0xff706464)),
                         ),
                         Text(
-                          "08 AM - 04 PM",
+                          "Blood Group O+",
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              color: Color(0xff706464)),
+                              color: const Color(0xff706464)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 16,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.location_on_outlined,
+                        const Icon(Icons.location_on_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           "Village -Khichan, Phalodi, Jodhpur, Rajasthan",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         )
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8.33,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.phone_outlined,
+                        const Icon(Icons.phone_outlined,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           "+91 91667120102",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         ),
                       ],
                     ),
+                    // ignore: prefer_const_constructors
                     SizedBox(
                       height: 8.33,
                     ),
                     Row(
                       children: [
-                        Icon(Icons.mail_outline,
+                        const Icon(Icons.mail_outline,
                             size: 13, color: Color(0xffBF222B)),
                         Text(
                           "trustblood@gmail.com",
                           style: GoogleFonts.roboto(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff857878)),
+                              color: const Color(0xff857878)),
                         ),
                       ],
                     ),
@@ -136,8 +150,8 @@ class _BloodDonationCamp2State extends State<BloodDonationCamp2> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 435,
+            const SizedBox(
+              height: 383,
             ),
             Center(
               child: ConstrainedBox(
@@ -145,13 +159,14 @@ class _BloodDonationCamp2State extends State<BloodDonationCamp2> {
                     height: 54, width: MediaQuery.of(context).size.width),
                 child: ElevatedButton(
                   onPressed: () {},
+                  // ignore: sort_child_properties_last
                   child: Text(
-                    'REGISTER AS VOLUNTARY DONOR',
+                    'CALL NOW',
                     style: GoogleFonts.roboto(
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFBF222B),
+                      backgroundColor: const Color(0xFFBF222B),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(69))),
                 ),

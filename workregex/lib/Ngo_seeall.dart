@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:workregex/bloodAvailabilitySearch%20.dart';
 
-import 'NGOaCTIVE.dart';
+import 'ngoactivity.dart';
 import 'BecomeVolunteerScreen.dart';
 import 'BloodDonationCampScreen.dart';
-import 'BloodDonationScreen.dart';
-import 'DonationScreen.dart';
+import 'BloodDonation.dart';
+import 'donationfillpage.dart';
 import 'notification.dart';
 
 class NgoProgramScreen extends StatefulWidget {
@@ -21,7 +21,7 @@ class _NgoProgramScreenState extends State<NgoProgramScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xffEDEDED),
-      appBar: AppBar(
+      appBar: AppBar(leading: BackButton(),
         title: Text(
           "NGO Program",
           style: GoogleFonts.roboto(
@@ -167,7 +167,7 @@ class _NgoProgramScreenState extends State<NgoProgramScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DonationScreen(),
+                          builder: (context) => Donation(),
                         ));
                   },
                   child: Container(

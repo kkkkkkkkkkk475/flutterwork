@@ -5,16 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:workregex/forgetpassword.dart';
 import 'package:workregex/otp.dart';
 
-class CreateAccountScreen extends StatefulWidget {
-  const CreateAccountScreen({super.key});
+class Number extends StatefulWidget {
+  const Number({super.key});
 
   @override
-  State<CreateAccountScreen> createState() => _CreateAccountScreenState();
+  State<Number> createState() => _NumberState();
 }
 
-class _CreateAccountScreenState extends State<CreateAccountScreen> {
- 
-
+class _NumberState extends State<Number> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,13 +106,11 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 constraints: BoxConstraints.tightFor(height: 54, width: 350),
                 child: ElevatedButton(
                   onPressed: () async {
-                   
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => Otp(),
                         ));
-                  
                   },
                   child: Text(
                     'SEND OTP',

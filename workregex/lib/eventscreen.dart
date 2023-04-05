@@ -12,7 +12,7 @@ class _EventScreenState extends State<EventScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(leading: BackButton(),
         elevation: 0,
         title: Text(
           "Event",

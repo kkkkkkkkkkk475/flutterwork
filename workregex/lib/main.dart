@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'package:workregex/NGOaCTIVE.dart';
-import 'package:workregex/bottomn.dart';
-import 'package:workregex/DonationScreen.dart';
-import 'package:workregex/login.dart';
-import 'package:workregex/logo.dart';
-import 'package:workregex/mobile.dart';
-import 'package:workregex/profile.dart';
 import 'package:workregex/splish.dart';
 
-import 'AvailableBloodScreen.dart';
-import 'LoginPage.dart';
-import 'bloodAvailabilitySearch .dart';
-import 'loginmobile.dart';
-import 'notification.dart';
+import 'bloodhospital.dart';
+import 'BloodDonation.dart';
+import 'Blood_Camp1.dart';
+import 'blood_call_camp.dart';
+import 'BloodDonationCampScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

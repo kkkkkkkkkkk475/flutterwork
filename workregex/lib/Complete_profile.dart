@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:workregex/bottomn.dart';
 
-import 'LoginPage.dart';
+import 'homedemo.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -12,19 +12,19 @@ class SignUpScreen extends StatefulWidget {
 }
 
 extension PasswordValidator on String {
-  bool isValidPassword() {
-    return RegExp(
-            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
-        .hasMatch(this);
-  }
+  // bool isValidPassword() {
+  //   return RegExp(
+  //           r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$')
+  //       .hasMatch(this);
+  // }
 }
 
 extension EmailValidator on String {
-  bool isValidEmail() {
-    return RegExp(
-            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-        .hasMatch(this);
-  }
+  // bool isValidEmail() {
+  //   return RegExp(
+  //           r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+  //       .hasMatch(this);
+  // }
 }
 
 final List<String> state = <String>[
@@ -80,6 +80,7 @@ final List<String> Blood = <String>[
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool isvisible = false;
+  bool isAvisible = false;
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -155,13 +156,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(41),
                               borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF667685)),
                               borderRadius: BorderRadius.circular(41)),
                           labelText: "Name",
@@ -172,14 +167,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       TextFormField(
                         controller: emailController,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter Email";
-                          } else if (!value.isValidEmail()) {
-                            return "Enter Correct Email";
-                          }
-                          return null;
-                        },
+                        // validator: (value) {
+                        //   if (value!.isEmpty) {
+                        //     return "Enter Email";
+                        //   } else if (!value.isValidEmail()) {
+                        //     return "Enter Correct Email";
+                        //   }
+                        //   return null;
+                        // },
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(16),
                           labelStyle: GoogleFonts.roboto(
@@ -189,13 +184,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(41),
                               borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF667685)),
                               borderRadius: BorderRadius.circular(41)),
                           labelText: "Email address",
@@ -206,16 +195,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       TextFormField(
                         controller: passwordController,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter Password";
-                          } else if (!value.isValidPassword()) {
-                            return "Password must contain one special character,one\nnumeric value, and first letter capital";
-                          }
-                          _password = value;
+                        // validator: (value) {
+                        //   if (value!.isEmpty) {
+                        //     return "Enter Password";
+                        //   } else if (!value.isValidPassword()) {
+                        //     return "Password must contain one special character,one\nnumeric value, and first letter capital";
+                        //   }
+                        //   _password = value;
 
-                          return null;
-                        },
+                        //   return null;
+                        // },
                         obscureText: !isvisible,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(16),
@@ -242,13 +231,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(41),
                               borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF667685)),
                               borderRadius: BorderRadius.circular(41)),
                           labelText: "Password",
@@ -259,24 +242,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       TextFormField(
                         controller: confirmController,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Enter Confirm Password";
-                          } else if (value != _password) {
-                            return "Password do not match";
-                          }
-                          return null;
-                        },
-                        obscureText: !isvisible,
+                        obscureText: !isAvisible,
                         decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(16),
                           suffixIcon: InkWell(
                             onTap: () {
                               setState(() {
-                                isvisible = !isvisible;
+                                isAvisible = !isAvisible;
                               });
                             },
-                            child: !isvisible
+                            child: !isAvisible
                                 ? Icon(
                                     Icons.visibility_outlined,
                                     color: Color(0xFF323232),
@@ -293,13 +268,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(41),
                               borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF667685)),
                               borderRadius: BorderRadius.circular(41)),
                           labelText: "Confirm Password",
@@ -325,13 +294,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(41),
                               borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF667685)),
                               borderRadius: BorderRadius.circular(41)),
                           labelText: "City",
@@ -360,14 +323,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   borderSide:
                                       BorderSide(color: Color(0xFF667685))),
                               errorBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Color(0xFF667685)),
-                                  borderRadius: BorderRadius.circular(41)),
-                              focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Color(0xFF667685)),
-                                  borderRadius: BorderRadius.circular(41)),
-                              enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Color(0xFF667685)),
                                   borderRadius: BorderRadius.circular(41)),
@@ -419,15 +374,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   borderRadius: BorderRadius.circular(41),
                                   borderSide:
                                       BorderSide(color: Color(0xFF667685))),
-                              errorBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Color(0xFF667685)),
-                                  borderRadius: BorderRadius.circular(41)),
                               focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Color(0xFF667685)),
-                                  borderRadius: BorderRadius.circular(41)),
-                              enabledBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Color(0xFF667685)),
                                   borderRadius: BorderRadius.circular(41)),
@@ -476,13 +423,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(41),
                               borderSide: BorderSide(color: Color(0xFF667685))),
-                          errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xFF667685)),
-                              borderRadius: BorderRadius.circular(41)),
-                          enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF667685)),
                               borderRadius: BorderRadius.circular(41)),
                           labelText: "Address",

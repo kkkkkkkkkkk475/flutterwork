@@ -1,27 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-class AvailableBloodScreen extends StatefulWidget {
-  const AvailableBloodScreen({super.key});
+class bloodcall extends StatefulWidget {
+  const bloodcall({super.key});
 
   @override
-  State<AvailableBloodScreen> createState() => _AvailableBloodScreenState();
+  State<bloodcall> createState() => _bloodcallState();
 }
 
-class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
+class _bloodcallState extends State<bloodcall> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Blood Availability Search",
-          style: GoogleFonts.roboto(
-              fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
-        ),
+      appBar: AppBar(leading: BackButton(),
         elevation: 0,
+        title: Text(
+          "Blood Donation Camp",
+          style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
+        ),
         backgroundColor: Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
+          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_outlined))
         ],
       ),
       body: Padding(
@@ -48,18 +46,18 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Trust Blood Hospital",
+                          "Blood Donation Camp",
                           style: GoogleFonts.roboto(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
                               color: Color(0xff473D3D)),
                         ),
                         Text(
-                          "Available",
+                          "Jodhpur",
                           style: GoogleFonts.roboto(
-                              fontSize: 13,
+                              fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              color: Color(0xff76AF3E)),
+                              color: Color(0xff473D3D)),
                         )
                       ],
                     ),
@@ -70,14 +68,14 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Last Updated 15-03-2023",
+                          "Organized By Youth Samiti",
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: Color(0xff706464)),
                         ),
                         Text(
-                          "Blood Group O+",
+                          "08 AM - 04 PM",
                           style: GoogleFonts.roboto(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -147,7 +145,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
                 child: ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    'CALL NOW',
+                    'REGISTER AS VOLUNTARY DONOR',
                     style: GoogleFonts.roboto(
                         fontSize: 16, fontWeight: FontWeight.w400),
                   ),
@@ -160,7 +158,7 @@ class _AvailableBloodScreenState extends State<AvailableBloodScreen> {
             ),
           ],
         ),
-     ),
-);
-}
+      ),
+    );
+  }
 }

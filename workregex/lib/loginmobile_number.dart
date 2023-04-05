@@ -5,26 +5,15 @@ import 'package:workregex/forgetpassword.dart';
 import 'package:workregex/mobile.dart';
 import 'package:workregex/otp.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class Loginnumber extends StatefulWidget {
+  const Loginnumber({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Loginnumber> createState() => _LoginnumberState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  // TextEditingController phonenumbercontroller = TextEditingController();
-  // TextEditingController otpcontroller = TextEditingController();
-  // bool otpsent = false;
-  // final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  // String? verificationIdData;
-
+class _LoginnumberState extends State<Loginnumber> {
   @override
-  // void initState() {
-  //   super.initState();
-  //   phonenumbercontroller.text = "7878593167";
-  // }
-
   bool isvisible = false;
   @override
   Widget build(BuildContext context) {
@@ -145,28 +134,6 @@ class _LoginPageState extends State<LoginPage> {
                             MaterialPageRoute(
                               builder: (context) => Otp(),
                             ));
-                        // print('+91${phonenumbercontroller.text}');
-                        // await firebaseAuth
-                        //     .verifyPhoneNumber(
-                        //   phoneNumber: '+91${phonenumbercontroller.text}',
-                        //   verificationCompleted:
-                        //       (PhoneAuthCredential credential) {},
-                        //   verificationFailed: (FirebaseAuthException e) {},
-                        //   codeSent: (String verificationId, int? resendToken) {
-                        //     setState(() {
-                        //       (verificationIdData.toString());
-                        //       verificationIdData = verificationId;
-                        //       debugPrint(verificationIdData);
-                        //       debugPrint(verificationId);
-
-                        //       otpsent = true;
-                        //     });
-                        //   },
-                        //   codeAutoRetrievalTimeout: (String verificationId) {},
-                        // )
-                        //     .onError((error, stackTrace) {
-                        //   (error.toString());
-                        // });
                       },
                       child: Text(
                         'SEND OTP',
@@ -201,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => CreateAccountScreen(),
+                                builder: (context) => Number(),
                               ));
                         },
                         child: Text(

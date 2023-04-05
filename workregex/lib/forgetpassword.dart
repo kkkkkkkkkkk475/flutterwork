@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:workregex/comment.dart';
+
 import 'package:workregex/logo.dart';
 import 'package:workregex/otp.dart';
 
@@ -92,7 +92,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SplashScreen(),
+                              builder: (context) => Logo(),
                             ));
                       },
                       child: Text(
@@ -117,7 +117,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => O(),
+                            builder: (context) => Otp(),
                           ));
                     },
                     child: Text(

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class NotAvailableBloodScreen extends StatefulWidget {
-  const NotAvailableBloodScreen({super.key});
+class Bloodhospital extends StatefulWidget {
+  const Bloodhospital({super.key});
 
   @override
-  State<NotAvailableBloodScreen> createState() =>
-      _NotAvailableBloodScreenState();
+  State<Bloodhospital> createState() => _BloodhospitalState();
 }
 
-class _NotAvailableBloodScreenState extends State<NotAvailableBloodScreen> {
+class _BloodhospitalState extends State<Bloodhospital> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: BackButton(),
         title: Text(
           "Blood Availability Search",
           style: GoogleFonts.roboto(
@@ -172,7 +172,7 @@ class _NotAvailableBloodScreenState extends State<NotAvailableBloodScreen> {
             ),
           ],
         ),
-     ),
-);
-}
+      ),
+    );
+  }
 }

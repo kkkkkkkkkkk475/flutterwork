@@ -1,19 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:workregex/Complete_profile.dart';
 
-
-
-class CreateNewPasswordScreen extends StatefulWidget {
-  const CreateNewPasswordScreen({super.key});
+class Password extends StatefulWidget {
+  const Password({super.key});
 
   @override
-  State<CreateNewPasswordScreen> createState() =>
-      _CreateNewPasswordScreenState();
+  State<Password> createState() => _PasswordState();
 }
 
-class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
+class _PasswordState extends State<Password> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +105,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
             ],
           ),
         ),
-     ),
-);
-}
+      ),
+    );
+  }
 }

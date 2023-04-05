@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:workregex/otp.dart';
-
 import 'logo.dart';
 import 'mobile.dart';
 
@@ -105,7 +104,7 @@ class _PasswordmState extends State<Passwordm> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CreateAccountScreen(),
+                          builder: (context) => Number(),
                         ));
                   },
                   child: Text(
@@ -164,7 +163,7 @@ class _PasswordmState extends State<Passwordm> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SplashScreen(),
+                              builder: (context) => Logo(),
                             ));
                       },
                       child: Text(

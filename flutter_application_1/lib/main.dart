@@ -9,6 +9,7 @@ import 'package:flutter_application_1/splash2.dart';
 import 'package:flutter_application_1/splash_screen.dart';
 import 'account.dart';
 import 'alert.dart';
+import 'demo.dart';
 import 'home_page.dart';
 import 'meesho_home.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: Demo(),
     );
   }
 }

@@ -20,7 +20,7 @@ class _BState extends State<B> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
+      appBar: AppBar(leading: BackButton(),
         title: Text(
           "Blood Availability Search",
           style: GoogleFonts.roboto(
@@ -61,6 +61,7 @@ class _BState extends State<B> {
                 ),
                 SizedBox(
                   height: 16,
+                  
                 ),
                 TextFormField(
                   controller: cityController,

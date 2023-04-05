@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:workregex/profile.dart';
 
 import 'loginmobile.dart';
 import 'mobile.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class Logo extends StatefulWidget {
+  const Logo({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<Logo> createState() => _LogoState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _LogoState extends State<Logo> {
+  @override
+  void initState() {
+    sharedValue();
+
+    super.initState();
+  }
+
+  void sharedValue() async {
+    SharedPreferences shared = await SharedPreferences.getInstance();
+    print(shared.getString('token'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CreateAccountScreen(),
+                        builder: (context) => Number(),
                       ));
                 },
                 child: Text(

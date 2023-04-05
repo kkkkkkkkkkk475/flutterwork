@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:workregex/profile.dart';
 
-import 'DonationScreen.dart';
-import 'LoginPage.dart';
-import 'home.dart';
+import 'donationfillpage.dart';
+import 'homedemo.dart';
+
 import 'logo.dart';
 
 class Bottom extends StatefulWidget {
@@ -24,7 +24,7 @@ class _BottomState extends State<Bottom> {
   }
 
   static List<Widget> screens = const [
-    DonationScreen(),
+    Donation(),
     Home2(),
     profile(),
   ];

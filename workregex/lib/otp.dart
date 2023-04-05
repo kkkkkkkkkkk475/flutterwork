@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_pin_code_fields/flutter_pin_code_fields.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:workregex/shared_pref.dart';
 import 'Complete_profile.dart';
 
 class Otp extends StatefulWidget {
@@ -88,6 +89,9 @@ class _OtpState extends State<Otp> {
               constraints: BoxConstraints.tightFor(height: 54, width: 328),
               child: ElevatedButton(
                 onPressed: () async {
+                  bool value = await SharedPref.setSharedString(
+                      SharedPref.tokenKeyName, '');
+                  if (value) {}
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(

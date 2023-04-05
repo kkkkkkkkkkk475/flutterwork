@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'bloodd1.dart';
+import 'blood_call_camp.dart';
 
-class BloodDonationScreen extends StatefulWidget {
-  const BloodDonationScreen({super.key});
+class BloodDonationCamp1 extends StatefulWidget {
+  const BloodDonationCamp1({super.key});
 
   @override
-  State<BloodDonationScreen> createState() => _BloodDonationScreenState();
+  State<BloodDonationCamp1> createState() => _BloodDonationCamp1State();
 }
 
-class _BloodDonationScreenState extends State<BloodDonationScreen> {
+class _BloodDonationCamp1State extends State<BloodDonationCamp1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
+      appBar: AppBar(leading: BackButton(),
         title: Text(
-          "Blood Donation",
-          style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
+          "Blood Donation Camp",
+          style: GoogleFonts.roboto(
+              fontSize: 19, fontWeight: FontWeight.w700, color: Colors.white),
         ),
+        elevation: 0,
         backgroundColor: Color(0xffBF222B),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_outlined))
+          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_none))
         ],
       ),
       body: Padding(
@@ -33,22 +34,12 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
             SizedBox(
               height: 16,
             ),
-            Text(
-              "Nearest blood centre",
-              style: GoogleFonts.roboto(
-                  color: Color(0xff706464),
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400),
-            ),
-            SizedBox(
-              height: 10,
-            ),
             InkWell(
               onTap: () {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BloodDonation1(),
+                      builder: (context) => bloodcall(),
                     ));
               },
               child: Container(
@@ -69,7 +60,7 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Blood Donation Center",
+                            "Blood Donation Camp",
                             style: GoogleFonts.roboto(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
@@ -122,7 +113,7 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => BloodDonation1(),
+                      builder: (context) => bloodcall(),
                     ));
               },
               child: Container(
@@ -143,7 +134,7 @@ class _BloodDonationScreenState extends State<BloodDonationScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Blood Donation Center",
+                            "Blood Donation Camp",
                             style: GoogleFonts.roboto(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,

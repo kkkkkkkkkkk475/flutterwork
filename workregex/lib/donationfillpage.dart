@@ -3,18 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:workregex/BloodAvailabilityScreen.dart';
 import 'package:workregex/bloodAvailabilitySearch%20.dart';
 
-import 'AvailableBloodScreen.dart';
-import 'BloodDonationScreen.dart';
+import 'bloodhospital.dart';
+import 'BloodDonation.dart';
 
-class DonationScreen extends StatefulWidget {
-  const DonationScreen({super.key});
+class Donation extends StatefulWidget {
+  const Donation({super.key});
 
   @override
-  State<DonationScreen> createState() => _DonationScreenState();
+  State<Donation> createState() => _DonationState();
 }
 
-class _DonationScreenState extends State<DonationScreen>
-    with TickerProviderStateMixin {
+class _DonationState extends State<Donation> with TickerProviderStateMixin {
   TabController? _tabController;
   @override
   void initState() {

@@ -19,7 +19,7 @@ class _NgoActivityScreenState extends State<NgoActivityScreen> {
       length: 2,
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 243, 241, 241),
-        appBar: AppBar(
+        appBar: AppBar(leading: BackButton(),
           elevation: 0,
           title: Text(
             "NGO Activity",

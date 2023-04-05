@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:workregex/NGOaCTIVE.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:workregex/ngoactivity.dart';
 import 'package:workregex/bloodAvailabilitySearch%20.dart';
-import 'package:workregex/ngoProgramScreen%20.dart';
+import 'package:workregex/Ngo_seeall.dart';
 import 'package:workregex/profile.dart';
+import 'package:workregex/splish.dart';
 import 'package:workregex/volunteer.dart';
 import 'BecomeVolunteerScreen.dart';
-import 'DonationScreen.dart';
-import 'home.dart';
+import 'BloodDonationCampScreen.dart';
+import 'donationfillpage.dart';
 import 'logo.dart';
 import 'notification.dart';
 
@@ -23,6 +25,13 @@ class _Home2State extends State<Home2> {
   List images = [
     "assets/wp4323509-blood-donation-wallpapers.jpg",
     "assets/wp4323470-blood-donation-wallpapers.jpg",
+  ];
+  List screens = [
+    B(),
+    BecomeVolunteerScreen(),
+    NgoActivityScreen(),
+    Donation(),
+    BloodDonationCampScreen(),
   ];
   List text_icon = [
     {
@@ -213,22 +222,26 @@ class _Home2State extends State<Home2> {
                       )),
                   TextButton.icon(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SplashScreen(),
-                            ));
+                        SharedPreferences.getInstance().then((value) {
+                          value.clear();
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Splish(),
+                              ),
+                              (route) => false);
+                        });
                       },
                       icon: Icon(
-                        Icons.settings_power_outlined,
+                        Icons.logout,
                         color: Color.fromARGB(255, 173, 17, 5),
                       ),
                       label: Text(
-                        ' Logout',
+                        'Logout',
                         style: GoogleFonts.roboto(
                             fontSize: 18,
                             fontWeight: FontWeight.w400,
-                            color: Colors.black),
+                            color: Color(0xff303030)),
                       )),
                 ],
               ),
@@ -311,6 +324,7 @@ class _Home2State extends State<Home2> {
                           height: 67,
                           width: 180,
                           padding: const EdgeInsets.all(8.0),
+                          // ignore: sort_child_properties_last
                           child: Column(
                             children: [
                               Text(

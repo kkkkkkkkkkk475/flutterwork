@@ -14,7 +14,7 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(leading: BackButton(),
         elevation: 0,
         title: Text(
           "Volunteer Request Form",
@@ -236,53 +236,17 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       shape: BoxShape.rectangle,
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 12, left: 16),
-                      child: Text("Any NGO Certificate",
-                          style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff5C5050))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 46,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF667685), width: 1),
-                      borderRadius: BorderRadius.circular(41),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12, left: 16),
-                      child: Text("Aadhar Card",
-                          style: GoogleFonts.roboto(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff5C5050))),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 46,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFF667685), width: 1),
-                      borderRadius: BorderRadius.circular(41),
-                      shape: BoxShape.rectangle,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12, left: 16),
-                      child: Text(
-                        "PAN Card",
-                        style: GoogleFonts.roboto(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff5C5050)),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("   Any NGO Certificate",
+                              style: GoogleFonts.roboto(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff5C5050))),
+                          Icon(Icons.attachment)
+                        ],
                       ),
                     ),
                   ),
@@ -298,13 +262,69 @@ class _BecomeVolunteerScreenState extends State<BecomeVolunteerScreen> {
                       shape: BoxShape.rectangle,
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 12, left: 16),
-                      child: Text(
-                        "Other Documents",
-                        style: GoogleFonts.roboto(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff5C5050)),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("  Aadhar Card",
+                              style: GoogleFonts.roboto(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff5C5050))),
+                          Icon(Icons.attachment)
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFF667685), width: 1),
+                      borderRadius: BorderRadius.circular(41),
+                      shape: BoxShape.rectangle,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("   PAN Card",
+                              style: GoogleFonts.roboto(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff5C5050))),
+                          Icon(Icons.attachment)
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 16,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 46,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Color(0xFF667685), width: 1),
+                      borderRadius: BorderRadius.circular(41),
+                      shape: BoxShape.rectangle,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("   Other Documents",
+                              style: GoogleFonts.roboto(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff5C5050))),
+                          Icon(Icons.attachment)
+                        ],
                       ),
                     ),
                   ),
