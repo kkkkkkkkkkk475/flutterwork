@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:regex/auth_controller.dart';
+import 'package:regex/shared_pref.dart';
+import 'package:regex/ui_helper.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -38,14 +40,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
     'assets/images/image-2.jpg',
     'assets/images/image-3.jpg',
   ];
+
+  String? phoneNumber;
+  @override
+  void initState() {
+    SharedPref.getUserNumber().then((value) {
+      phoneNumber = value;
+      setState(() {});
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       body: ListView(
         children: [
           const SizedBox(
-            height: 78,
+            height: 30,
           ),
           Center(
             child: CircleAvatar(
@@ -60,7 +72,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Text(
               'Jane',
               style: GoogleFonts.comfortaa(
-                  fontSize: 36, fontWeight: FontWeight.w400),
+                  color: Theme.of(context).textTheme.bodyText1?.color,
+                  fontSize: 36,
+                  fontWeight: FontWeight.w400),
             ),
           ),
           const SizedBox(
@@ -69,47 +83,56 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Center(
             child: Text(
               'San francisco, ca',
-              style:
-                  GoogleFonts.roboto(fontSize: 13, fontWeight: FontWeight.w900),
-            ),
-          ),
-          const SizedBox(
-            height: 32,
-          ),
-          Container(
-            height: 52,
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            width: double.infinity,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6), color: Colors.black),
-            child: Center(
-                child: Text(
-              'follow jane'.toUpperCase(),
               style: GoogleFonts.roboto(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w900,
-                  color: Colors.white),
-            )),
+                fontSize: 13,
+                fontWeight: FontWeight.w900,
+                color: Theme.of(context).textTheme.bodyText1?.color,
+              ),
+            ),
           ),
           const SizedBox(
             height: 16,
           ),
-          Container(
-            height: 52,
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            width: double.infinity,
-            decoration: BoxDecoration(
-                border: Border.all(width: 2),
-                borderRadius: BorderRadius.circular(6),
-                color: Colors.white),
-            child: Center(
-                child: Text(
-              'message'.toUpperCase(),
-              style: GoogleFonts.roboto(
-                fontSize: 13,
-                fontWeight: FontWeight.w900,
+          if (phoneNumber != null)
+            Center(
+              child: Text(
+                phoneNumber.toString(),
+                style: GoogleFonts.roboto(
+                    color: Theme.of(context).textTheme.bodyText1?.color,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w900),
               ),
-            )),
+            ),
+          const SizedBox(
+            height: 32,
+          ),
+          UiHelper.buttonWithWhiteText('Follow', () {
+            Provider.of<AuthController>(context, listen: false).chnage();
+          }, context),
+          const SizedBox(
+            height: 16,
+          ),
+          InkWell(
+            onTap: () {
+              SharedPref.clearData(context);
+            },
+            child: Container(
+              height: 52,
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  border: Border.all(width: 2),
+                  borderRadius: BorderRadius.circular(6),
+                  color: Colors.white),
+              child: Center(
+                  child: Text(
+                'logout'.toUpperCase(),
+                style: GoogleFonts.roboto(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w900,
+                ),
+              )),
+            ),
           ),
           const SizedBox(
             height: 16,

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -48,7 +46,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       body: ListView(children: [
         const SizedBox(
-          height: 60,
+          height: 10,
         ),
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -72,12 +70,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   temp.add(images[i]);
                 }
               }
-              // for (var element in images) {
-              //   if (element['image_name']
-              //       .toString()
-              //       .toLowerCase()
-              //       .contains(value.toLowerCase())) {}
-              // }
+
               setState(() {});
             },
             keyboardType: TextInputType.emailAddress,

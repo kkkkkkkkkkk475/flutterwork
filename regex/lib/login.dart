@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,7 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       time = timer.tick;
-      print(time);
+     // ignore: avoid_print
+     print(time);
     });
     super.initState();
   }
@@ -40,14 +39,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     fontWeight: FontWeight.w500,
                     letterSpacing: 1.2,
                     color: Colors.black)),
-            actionsIconTheme: IconThemeData(color: Colors.black, size: 30),
+            actionsIconTheme:const IconThemeData(color: Colors.black, size: 30),
           ),
           body: Center(
             child: TextButton(
                 child: Text(time.toString(),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
+                    style:const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 1.2,

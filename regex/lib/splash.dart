@@ -1,10 +1,15 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-// import 'package:regex/list_ui_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:regex/auth_controller.dart';
+import 'package:regex/home_page.dart';
 import 'package:regex/login_screen.dart';
+import 'package:regex/network_api.dart';
 import 'package:regex/register_screen.dart';
+import 'package:regex/shared_pref.dart';
+import 'package:regex/user_details.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -27,6 +32,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -36,9 +46,15 @@ class _SplashScreenState extends State<SplashScreen> {
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+              onTap: () async {
+                String? number = await SharedPref.getUserNumber();
+                if (number != null && number.isNotEmpty) {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const MyHomePageScreen()));
+                } else {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const LoginScreen()));
+                }
               },
               child: Container(
                   height: 52,
@@ -56,8 +72,8 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => RegisterScreen()));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const RegisterScreen()));
               },
               child: Container(
                   height: 52,
@@ -98,13 +114,23 @@ class _SplashScreenState extends State<SplashScreen> {
                     child: Text(
                       'photo',
                       style: GoogleFonts.comfortaa(
-                          color: Colors.black,
+                          color: Theme.of(context).textTheme.bodyText1?.color,
                           fontSize: 48,
                           fontWeight: FontWeight.w400),
                     ),
                   )
                 ]),
               ),
+
+//               ValueListenableBuilder<int>(
+//   valueListenable: myValueListenable,
+//   builder: (context, value, _) {
+//     return Provider<int>.value(
+//       value: value,
+//       child: Text(context.watch()),
+//     );
+//   }
+// )
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(

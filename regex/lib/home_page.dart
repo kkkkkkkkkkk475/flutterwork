@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:regex/add.dart';
+import 'package:regex/drawer_appbar.dart';
 import 'package:regex/home.dart';
 import 'package:regex/profile.dart';
 import 'package:regex/scanner.dart';
 import 'package:regex/search.dart';
-// import 'package:flutter/src/widgets/container.dart';
-// import 'package:flutter/src/widgets/framework.dart';
 
 class MyHomePageScreen extends StatefulWidget {
   const MyHomePageScreen({super.key});
@@ -18,6 +17,7 @@ enum BottomNav { HOME, PROFILE, ADD, SCANNER, SEARCH }
 
 class _MyHomePageScreenState extends State<MyHomePageScreen> {
   BottomNav bottomNav = BottomNav.HOME;
+
 
   Widget showBodyWidget() {
     switch (bottomNav) {
@@ -39,6 +39,13 @@ class _MyHomePageScreenState extends State<MyHomePageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 1,
+      //   iconTheme: IconThemeData(color: Colors.black),
+      // ),
+      // drawer: DrawerAppBar(),
+      endDrawer: DrawerAppBar(),
       bottomNavigationBar: SizedBox(
         height: 80,
         width: double.infinity,

@@ -1,34 +1,33 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:workregex/bottomn.dart';
+import 'package:workregex/sard.dart';
+import 'all_sreen.dart';
 
-class profile extends StatefulWidget {
-  const profile({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<profile> createState() => _profileState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-String name = '';
-XFile? image;
-
-class _profileState extends State<profile> {
+class _ProfileScreenState extends State<ProfileScreen> {
+   String? phoneNumber;
   @override
-  TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController MobileController = TextEditingController();
-  TextEditingController stateController = TextEditingController();
-  TextEditingController bloodGroupController = TextEditingController();
-  TextEditingController DistrictController = TextEditingController();
+  void initState() {
+    SharedPref.getUserNumber().then((value) {
+      phoneNumber = value;
+      setState(() {});
+    });
+    super.initState();
+  }
+  XFile? image;
   GlobalKey<ScaffoldState> key = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEDEDED),
+      backgroundColor: Colors.white,
       key: key,
       appBar: AppBar(
         elevation: 0,
@@ -36,301 +35,389 @@ class _profileState extends State<profile> {
           "Profile",
           style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
         ),
-        backgroundColor: Color(0xffBF222B),
+        backgroundColor:const Color(0xffBF222B),
         leading: IconButton(
             onPressed: () {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Bottom(),
+                    builder: (context) =>const AllScreen(),
                   ));
             },
-            icon: Icon(Icons.arrow_back)),
+            icon:const Icon(Icons.arrow_back)),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.edit_outlined))
+          IconButton(onPressed: () {}, icon:const Icon(Icons.edit_outlined))
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Stack(children: [
-                  InkWell(  onTap: () => bottomSheetWidget(),
-                  
-                    child: CircleAvatar(
-                      radius: 70,
-                      backgroundColor: Color.fromARGB(255, 167, 6, 14),
-                      child: image == null
-                          ? CircleAvatar(
-                              radius: 65,
-                              backgroundImage: AssetImage(
-                                  'assets/wp4323528-blood-donation-wallpapers.jpg'))
-                          : CircleAvatar(
-                              radius: 65,
-                              backgroundImage: FileImage(File(image!.path)),
+      body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                elevation: 0,
+                backgroundColor:Color.fromRGBO(237, 237, 237, 1),
+                collapsedHeight: 221,
+                pinned: true,
+                floating: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Padding(
+                    padding: const EdgeInsets.only(left: 50),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                         const   SizedBox(
+                              height: 24,
                             ),
+                            Stack(children: [
+                              InkWell(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                      backgroundColor: Colors.white,
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return SizedBox(
+                                          height: 70,
+                                          width: double.infinity,
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              IconButton(
+                                                  onPressed: () {
+                                                    ImagePicker()
+                                                        .pickImage(
+                                                            source:
+                                                                ImageSource
+                                                                    .camera)
+                                                        .then((value) {
+                                                      image = value;
+                                                      setState(() {});
+                                                    });
+                                                  },
+                                                  icon:const Icon(
+                                                    Icons.camera_outlined,
+                                                    color: Color(0xffBF222B),
+                                                    size: 30,
+                                                  )),
+                                            const  SizedBox(
+                                                width: 100,
+                                              ),
+                                              IconButton(
+                                                  onPressed: () {
+                                                    ImagePicker()
+                                                        .pickImage(
+                                                            source:
+                                                                ImageSource
+                                                                    .gallery)
+                                                        .then((value) {
+                                                      image = value;
+                                                      setState(() {});
+                                                    });
+                                                  },
+                                                  icon:const Icon(
+                                                    Icons
+                                                        .photo_library_outlined,
+                                                    color: Color(0xffBF222B),
+                                                    size: 30,
+                                                  ))
+                                            ],
+                                          ),
+                                        );
+                                      });
+                                },
+                                child: image != null
+                                    ? CircleAvatar(
+                                        radius: 70,
+                                        backgroundImage:
+                                            FileImage(File(image!.path)),
+                                      )
+                                    :const CircleAvatar(
+                                        radius: 70,
+                                        backgroundImage: const AssetImage(
+                                            'assets/man-suit-standing-office-with-clipboard-pointing-poster-with-words.jpg'),
+                                      ),
+                              ),
+                            const  Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 100, top: 100),
+                                child: CircleAvatar(
+                                  radius: 20,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.camera_alt_outlined,
+                                    color: Color(0xffBF222B),
+                                  ),
+                                ),
+                              )
+                            ]),
+                          const  SizedBox(
+                              height: 13,
+                            ),
+                            Text(
+                              "Vikash Sharma",
+                              style: GoogleFonts.roboto(
+                                  color:const Color(0xff303030),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700),
+                            )
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 85, top: 85),
-                    child: CircleAvatar(
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.camera_alt_outlined,
-                            size: 30,
-                            color: Color(0xffBF222B),
-                          )),
-                      radius: 25,
-                      backgroundColor: Colors.white,
-                    ),
+                ),
+              )
+            ];
+          },
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+             const   SizedBox(
+                  height: 9,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                            width: double.infinity,
+                            height: 46,
+                            margin:const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                            padding:const EdgeInsets.only(bottom: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:const Color(0xFF667685), width: 1),
+                              borderRadius: BorderRadius.circular(41),
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Positioned(
+                            left: 20,
+                            top: 12,
+                            child: Container(
+                              padding:const EdgeInsets.only(
+                                  bottom: 10, left: 10, right: 10),
+                              color: Colors.white,
+                              child: Text(
+                                'Name',
+                                style: GoogleFonts.roboto(
+                                    color:const Color(0xFF303030),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                  const    SizedBox(
+                        height: 5,
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                            width: double.infinity,
+                            height: 46,
+                            margin:const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                            padding:const EdgeInsets.only(bottom: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:const Color(0xFF667685), width: 1),
+                              borderRadius: BorderRadius.circular(41),
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Positioned(
+                            left: 20,
+                            top: 12,
+                            child: Container(
+                              padding:const EdgeInsets.only(
+                                  bottom: 10, left: 10, right: 10),
+                              color: Colors.white,
+                              child: Text(
+                                'Mobile Number',
+                                style: GoogleFonts.roboto(
+                                    color: Color(0xFF303030),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                   const   SizedBox(
+                        height: 5,
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                            width: double.infinity,
+                            height: 46,
+                            margin:const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                            padding:const EdgeInsets.only(bottom: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:const Color(0xFF667685), width: 1),
+                              borderRadius: BorderRadius.circular(41),
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Positioned(
+                            left: 20,
+                            top: 12,
+                            child: Container(
+                              padding:const EdgeInsets.only(
+                                  bottom: 10, left: 10, right: 10),
+                              color: Colors.white,
+                              child: Text(
+                                'Email',
+                                style: GoogleFonts.roboto(
+                                    color:const Color(0xFF303030),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    const  SizedBox(
+                        height: 5,
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                            width: double.infinity,
+                            height: 46,
+                            margin:const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                            padding:const EdgeInsets.only(bottom: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:const Color(0xFF667685), width: 1),
+                              borderRadius: BorderRadius.circular(41),
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Positioned(
+                            left: 20,
+                            top: 12,
+                            child: Container(
+                              padding:const EdgeInsets.only(
+                                  bottom: 10, left: 10, right: 10),
+                              color: Colors.white,
+                              child: Text(
+                                'Blood Group',
+                                style: GoogleFonts.roboto(
+                                    color:const Color(0xFF303030),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                   const   SizedBox(
+                        height: 5,
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                            width: double.infinity,
+                            height: 46,
+                            margin:const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                            padding:const EdgeInsets.only(bottom: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color:const Color(0xFF667685), width: 1),
+                              borderRadius: BorderRadius.circular(41),
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Positioned(
+                            left: 20,
+                            top: 12,
+                            child: Container(
+                              padding:const EdgeInsets.only(
+                                  bottom: 10, left: 10, right: 10),
+                              color: Colors.white,
+                              child: Text(
+                                'State',
+                                style: GoogleFonts.roboto(
+                                    color:const Color(0xFF303030),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    const  SizedBox(
+                        height: 5,
+                      ),
+                      Stack(
+                        children: <Widget>[
+                          Container(
+                            width: double.infinity,
+                            height: 46,
+                            margin:const EdgeInsets.fromLTRB(0, 20, 0, 10),
+                            padding:const EdgeInsets.only(bottom: 10),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Color(0xFF667685), width: 1),
+                              borderRadius: BorderRadius.circular(41),
+                              shape: BoxShape.rectangle,
+                            ),
+                          ),
+                          Positioned(
+                            left: 20,
+                            top: 12,
+                            child: Container(
+                              padding:const EdgeInsets.only(
+                                  bottom: 10, left: 10, right: 10),
+                              color: Colors.white,
+                              child: Text(
+                                'District',
+                                style: GoogleFonts.roboto(
+                                    color:const Color(0xFF303030),
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                     const SizedBox(
+                        height: 23,
+                      ),
+                      Center(
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints.tightFor(
+                              height: 50,
+                              width: MediaQuery.of(context).size.width),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            // ignore: sort_child_properties_last
+                            child: Text(
+                              'SAVE',
+                              style: GoogleFonts.roboto(
+                                  fontSize: 16, fontWeight: FontWeight.w400),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor:const Color(0xFFBF222B),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(69))),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ]),
-                SizedBox(
-                  height: 13,
                 ),
-                Text(
-                  "Vikash Sharma",
-                  style: GoogleFonts.roboto(
-                      fontSize: 20, fontWeight: FontWeight.w700),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  child: Divider(
-                    color: Colors.black,
-                  ),
-                  width: 250,
-                )
               ],
             ),
-            SizedBox(
-              height: 15,
-            ),
-            Stack(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 10),
-                  padding: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(41),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Positioned(
-                  left: 50,
-                  top: 12,
-                  child: Container(
-                    padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                    color: Color(0xffEDEDED),
-                    child: Text(
-                      'Create an account',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 10),
-                  padding: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(41),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Positioned(
-                  left: 50,
-                  top: 12,
-                  child: Container(
-                    padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                    color: Color(0xffEDEDED),
-                    child: Text(
-                      'Create an account',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 10),
-                  padding: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(41),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Positioned(
-                  left: 50,
-                  top: 12,
-                  child: Container(
-                    padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                    color: Color(0xffEDEDED),
-                    child: Text(
-                      'Create an account',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 10),
-                  padding: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(41),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Positioned(
-                  left: 50,
-                  top: 12,
-                  child: Container(
-                    padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                    color: Color(0xffEDEDED),
-                    child: Text(
-                      'Create an account',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 10),
-                  padding: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(41),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Positioned(
-                  left: 50,
-                  top: 12,
-                  child: Container(
-                    padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                    color: Color(0xffEDEDED),
-                    child: Text(
-                      'Create an account',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  margin: EdgeInsets.fromLTRB(20, 20, 20, 10),
-                  padding: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: BorderRadius.circular(41),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                Positioned(
-                  left: 50,
-                  top: 12,
-                  child: Container(
-                    padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                    color: Color(0xffEDEDED),
-                    child: Text(
-                      'Create an account',
-                      style: TextStyle(color: Colors.black, fontSize: 12),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void saveData() async {
-    final pref = await SharedPreferences.getInstance();
-
-    name = pref.getString("name")!;
-
-    print(name);
-  }
-
-  void bottomSheetWidget() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(15.0),
-        ),
-      ),
-      builder: (context) => DraggableScrollableSheet(
-          initialChildSize: 0.28,
-          maxChildSize: 0.4,
-          minChildSize: 0.28,
-          expand: false,
-          builder: (context, scrollController) {
-            return SingleChildScrollView(
-                controller: scrollController,
-                child: Column(
-                  children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          ImagePicker()
-                              .pickImage(source: ImageSource.camera)
-                              .then((value) {
-                            image = value;
-                            setState(() {});
-                          });
-                        },
-                        child: Text('Camera')),
-                    ElevatedButton(
-                        onPressed: () {
-                          ImagePicker()
-                              .pickImage(source: ImageSource.gallery)
-                              .then((value) {
-                            image = value;
-                            setState(() {});
-                          });
-                        },
-                        child: Text('Gallery'))
-                  ],
-                ));
-          }),
-    );
-  }
+          )),
+);
+}
 }

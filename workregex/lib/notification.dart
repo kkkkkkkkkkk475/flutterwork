@@ -1,298 +1,147 @@
 import 'package:flutter/material.dart';
-class Noti extends StatefulWidget {
-  const Noti({super.key});
+import 'package:google_fonts/google_fonts.dart';
+
+class NotificationScreen extends StatefulWidget {
+  const NotificationScreen({super.key});
 
   @override
-  State<Noti> createState() => _NotiState();
+  State<NotificationScreen> createState() => _NotificationScreenState();
 }
-class _NotiState extends State<Noti> {
+
+class _NotificationScreenState extends State<NotificationScreen> {
+  List notification = [
+    {
+      "image": "assets/Ellipse 16.png",
+      "heading": "we want to thank all of our donors.",
+      "content": "Send By NGO",
+      "time": "2 Hours Ago"
+    },
+
+    
+    {
+      "image": "assets/Ellipse 16.png",
+      "heading": "we want to thank all of our donors.",
+      "content": "Send By NGO",
+      "time": "2 Days Ago"
+    },
+    {
+      "image": "assets/Ellipse 16.png",
+      "heading": "we want to thank all of our donors.",
+      "content": "Send By NGO",
+      "time": "4 Days Ago"
+    },
+    {
+      "image": "assets/Ellipse 16.png",
+      "heading": "we want to thank all of our donors.",
+      "content": "Send By NGO",
+      "time": "10 Days Ago"
+    },
+    {
+      "image": "assets/Ellipse 16.png",
+      "heading": "we want to thank all of our donors.",
+      "content": "Send By NGO",
+      "time": "1 Month Ago"
+    }
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffEDEDED),
       appBar: AppBar(
+        elevation: 0,
         title: Text(
-          'Notification',
-          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 19),
+          "Notification",
+          style: GoogleFonts.roboto(fontSize: 19, fontWeight: FontWeight.w700),
         ),
-        leading: BackButton(color: Colors.white),
         backgroundColor: Color(0xffBF222B),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Column(
           children: [
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              height: 82,
-              width: 340,
-              // ignore: sort_child_properties_last
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15), 
-                    child: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/Ellipse 18.png'),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      // ignore: prefer_const_constructors
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 5),
-                          child: Text(
-                            '                                                                NEW',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromARGB(255, 212, 24, 11)),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'we want to thank all of our donors.    ',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: 9,
-                      ),
-                      Row(
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: notification.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Container(
+                    height: 72,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Row(
                         children: [
-                          Icon(Icons.south_west),
-                          Text(
-                            ' Send By NGO         ',
-                            style: TextStyle(fontWeight: FontWeight.w400),
+                          Container(
+                            height: 44,
+                            width: 44,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        notification[index]["image"]))),
                           ),
-                          Text(
-                            '2 Hours Ago',
-                            style: TextStyle(fontWeight: FontWeight.w400),
+                       const   SizedBox(
+                            width: 13,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                notification[index]["heading"],
+                                style: GoogleFonts.roboto(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w700,
+                                    color:const Color(0xff473D3D)),
+                              ),
+                           const   SizedBox(
+                                height: 7,
+                              ),
+                              // ignore: sized_box_for_whitespace
+                              Container(
+                                width: 290,
+                                child: Row(
+                                  children: [
+                                  const  Icon(
+                                      Icons.arrow_back_outlined,
+                                      color: Color(0xff706464),
+                                    ),
+                                 const   SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      notification[index]["content"],
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w400,
+                                          color:const Color(0xff706464)),
+                                    ),
+                                 const   Spacer(),
+                                    Text(
+                                      notification[index]["time"],
+                                      style: GoogleFonts.roboto(
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.w400,
+                                          color:const Color(0xff706464)),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
                           )
                         ],
                       ),
-                    ],
-                  ),
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 82,
-              width: 340,
-              // ignore: sort_child_properties_last
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/Ellipse 18.png'),
                     ),
                   ),
-                  Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 5),
-                          child: Text(
-                            '                                                                NEW',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
-                                color: Color.fromARGB(255, 212, 24, 11)),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'we want to thank all of our donors.    ',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: 9,
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.south_west),
-                          Text(
-                            ' Send By NGO         ',
-                            style: TextStyle(fontWeight: FontWeight.w400),
-                          ),
-                          Text(
-                            '2 Hours Ago',
-                            style: TextStyle(fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 82,
-              width: 340,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/Ellipse 18.png'),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        '    we want to thank all of our donors.    ',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: 9,
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.south_west),
-                          Text(
-                            ' Send By NGO         ',
-                            style: TextStyle(fontWeight: FontWeight.w400),
-                          ),
-                          Text(
-                            '2 Hours Ago',
-                            style: TextStyle(fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 82,
-              width: 340,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/Ellipse 18.png'),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      SizedBox( 
-                        height: 20,
-                      ),
-                      Text(
-                        '    we want to thank all of our donors.    ',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: 9,
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.south_west),
-                          Text(
-                            ' Send By NGO         ',
-                            style: TextStyle(fontWeight: FontWeight.w400),
-                          ),
-                          Text(
-                            '2 Hours Ago',
-                            style: TextStyle(fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 82,
-              width: 340,
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15),
-                    child: CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('assets/Ellipse 18.png'),
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        '    we want to thank all of our donors.    ',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: 9,
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.south_west),
-                          Text(
-                            ' Send By NGO         ',
-                            style: TextStyle(fontWeight: FontWeight.w400),
-                          ),
-                          Text(
-                            '2 Hours Ago',
-                            style: TextStyle(fontWeight: FontWeight.w400),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
-            ),
+                );
+              },
+            )
           ],
         ),
-      ),
-    );
-  }
+     ),
+);
+}
 }

@@ -27,7 +27,7 @@ class _AState extends State<A> {
                     'assets/box.png',
                     height: 30,
                   ),
-                  Text(
+                  const Text(
                     'photo',
                     style: TextStyle(fontSize: 30),
                   )
@@ -73,7 +73,7 @@ class _AState extends State<A> {
             )
           ],
         ),
-        decoration: BoxDecoration(
+        decoration:const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(
                   'assets/splash_background.png',
