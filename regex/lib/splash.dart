@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:regex/astro_widget.dart';
 import 'package:regex/auth_controller.dart';
 import 'package:regex/home_page.dart';
 import 'package:regex/login_screen.dart';
@@ -47,6 +48,9 @@ class _SplashScreenState extends State<SplashScreen> {
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             InkWell(
               onTap: () async {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const AstroWidget()));
+                return;
                 String? number = await SharedPref.getUserNumber();
                 if (number != null && number.isNotEmpty) {
                   Navigator.of(context).push(MaterialPageRoute(

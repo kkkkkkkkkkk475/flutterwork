@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'REGEX',
-      theme: UiHelper.theme(context.watch<AuthController>().theme),
+      // theme: UiHelper.theme(context.watch<AuthController>().theme),
+      theme: UiHelper.theme(ThemeEnum.Light),
       home: SplashScreen(),
     );
   }
